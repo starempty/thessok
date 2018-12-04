@@ -43,6 +43,12 @@
 	out.println("<table/>");
 	%>
 
+<h6>Do you want to check another stock?</h6>
+<button type="button" onclick="location.href='admin_stock_check.html' ">Other stock?</button>
+</br>
+<h6>Do you want to order some products?</h6>
+<button type="button" onclick="location.href='admin_stock_order.html' ">Order stock?</button>
+</br>
 <h6>Do you want to check another month too?</h6>
 <button type="button" onclick="location.href='administrator.html' ">Other month?</button>
 </br>

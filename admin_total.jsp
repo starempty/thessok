@@ -42,7 +42,7 @@
 	%>
 
 <h6>Do you want to check monthly sum?</h6>
-<button type="button" onclick="location.href='administrator.html' ">Other month?</button>
+<button type="button" onclick="location.href='administrator.html' ">Monthly sum</button>
 </br>
 <h6>Do you want to check total sum again??</h6>
 <button type="button" onclick="location.href='admin_total.jsp' ">Total sum</button>
