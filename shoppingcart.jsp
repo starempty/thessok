@@ -14,7 +14,6 @@
 	<h3>Do you want to order more?</h3>
 	<h3>!!OR now order it!!</h3>
 	
-	
      
 	<%
 	String url = "jdbc:mysql://localhost:3306/thessok?characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false";
@@ -34,7 +33,7 @@
 	
 	if(ID == null);
 	
-	String query = "SELECT distinct product_num,name,price FROM product,shopping_cart WHERE s_product_num=product_num AND customer_num="
+	String query = "SELECT distinct product_num,name,price FROM product,shopping_cart,orders WHERE purchase_num=r_purchase_num and date='' and s_product_num=product_num AND customer_num="
 			+custNum;
 	
 	pstmt = conn.prepareStatement(query);
@@ -60,6 +59,10 @@
 	<button type="button" onclick="location.href='category.html' ">I want to buy more</button>
 	<br/>
 	<button type="button" onclick="location.href='order.html' ">Order</button>
-
+	<br/>
+	<button type="button" onclick="location.href='logout.jsp' ">LogOut</button>
+	<br/>
+	<button type="button" onclick="location.href='change_info.html' ">Change information</button>
+	<br/>
 </body>
 </html>
