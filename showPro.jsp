@@ -19,14 +19,27 @@
 	String user="thessok";
 	String pass="comp322";
 	String n = "";
+	String[] arr = new String[20];
 	Connection conn;
 	PreparedStatement pstmt;
 	ResultSet rs;
+	PreparedStatement stmt;
+	ResultSet res;
 	Class.forName("com.mysql.jdbc.Driver");
 	conn = DriverManager.getConnection(url,user,pass);
 	%>
 
 	<%
+	String sql = "Select name from product where d_category_num="
+	+request.getParameter("classification") +" and shop_num="
+	+request.getParameter("shop") + " and shop_stock =(select max(shop_stock) from product where shop_num="
+	+request.getParameter("shop")
+	+" and d_category_num="
+	+request.getParameter("classification")+")";
+	
+	stmt = conn.prepareStatement(sql);
+	res=stmt.executeQuery();
+	
 	String query = "Select name, price from product where d_category_num="
 	+request.getParameter("classification") +" and shop_num="
 	+request.getParameter("shop") + " and shop_stock > 0";
@@ -36,13 +49,23 @@
 	
 	out.println("<table border=\"1\">");
 	ResultSetMetaData rsmd = rs.getMetaData();
+	ResultSetMetaData rsmdd = res.getMetaData();
 	int cnt = rsmd.getColumnCount();
 	for(int j=1;j<=cnt;j++){
 		out.println("<th>"+rsmd.getColumnName(j)+"</th>");
 	}
+	Integer i=0;
+	Integer ck=0;
+	while(res.next()){
+		arr[i++]=res.getString(1);
+	}
+	ck=i;
 	while(rs.next()){
+		String c=rs.getString(1);
+		for(i=0;i<ck;i++)
+			if(c.equals(arr[i])) c+="*";
 		out.println("<tr>");
-		out.println("<td>"+rs.getString(1)+"</td>");
+		out.println("<td>"+c+"</td>");
 		out.println("<td>"+rs.getInt(2)+"</td>");
 		n = rs.getString(1);
 		out.println("<td><input type=\"button\" onclick = \"moveURL('"+n+"')\" value = \"detail\"> </td>");
