@@ -9,16 +9,17 @@
 <title>TheSSOK::The Best Shopping mall</title>
 </head>
 <body>
-	<h2>Successfully joined! WELCOME!</h2>
+	<h2>Successfully Add! Thank you!</h2>
 	<%
 	String url = "jdbc:mysql://localhost:3306/thessok?characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false";
-	String user="thessok";
+	String user="knu";
 	String pass="comp322";
 	Connection conn;
 	PreparedStatement pstmt;
 	ResultSet rs;
 	String s; 
 	Integer custNum=1000;
+	Integer stock = 0;
 	Integer p_num = 1100000000;
 	Statement stmt=null;
 	Class.forName("com.mysql.cj.jdbc.Driver");
@@ -26,10 +27,8 @@
 	custNum=(Integer)session.getAttribute("customer_num");
 	
 	
-	out.println("<h2> ::" + request.getParameter("product") + " 상세 정보:: </h2>");
 	
-	//insert into shopping_cart value (1,1000000004 , 1100000228, 1110000001);
-	
+
 	String sql = "SELECT purchase_num FROM orders where date='' and cus_num="
 			+custNum;
 	
@@ -44,14 +43,13 @@
 			+ request.getParameter("product") +", "
 			+ p_num +", "
 			+ request.getParameter("shop")+")";
-	
-	
+
 	pstmt = conn.prepareStatement(que);
 	int res = pstmt.executeUpdate();
 	
-	
 	%>
-	
+	<button type="button" onclick="location.href='shoppingcart.jsp' ">my shopping cart</button>
+	<br/>
 
 </body>
 </html>
