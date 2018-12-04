@@ -7,18 +7,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>TheSSOK::The Best Shoppingmall</title>
+<title>TheSSOK::The Best Shopping mall</title>
 </head>
 <body>
-	<h2>It's your shopping cart!</h2>
-	<h3>Do you want to order more?</h3>
-	<h3>!!OR now order it!!</h3>
+	<h2>It's your history of orders!</h2>
 	
-	
-     
 	<%
 	String url = "jdbc:mysql://localhost:3306/thessok?characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false";
-	String user="knu";
+	String user="thessok";
 	String pass="comp322";
 	Connection conn;
 	PreparedStatement pstmt;
@@ -34,8 +30,8 @@
 	
 	if(ID == null);
 	
-	String query = "SELECT date,name,price FROM product,shopping_cart,orders WHERE cus_num = "
-			+custNum + " and cus_num = customer_num and s_product_num = product_num and r_purchase_num = purchase_num and s_shop_num=shop_num";
+	String query = "SELECT distinct date,name,price FROM product,shopping_cart,orders WHERE cus_num = "
+			+custNum + " and cus_num = customer_num and purchase_num=r_purchase_num and shop_num=s_shop_num and s_product_num = product_num and date != '' order by date asc";
 	
 	pstmt = conn.prepareStatement(query);
 	rs=pstmt.executeQuery();
@@ -58,6 +54,7 @@
 	
 	<button type="button" onclick="location.href='category.html'">CATEGORY</button>
 	<br/>
+		<button type="button" onclick="location.href='shoppingcart.jsp'">My shopping cart</button>
 
 </body>
 </html>
