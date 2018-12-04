@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>TheSSOK::The Best Shoppingmall</title>
+<title>TheSSOK::The Best Shopping mall</title>
 </head>
 <body>
 	<h2>Successfully joined! WELCOME!</h2>
@@ -19,7 +19,7 @@
 	PreparedStatement pstmt;
 	ResultSet rs;
 	String s; 
-	Integer p_num=1000;
+	Integer p_num=1100000000;
 	Statement stmt=null;
 	Class.forName("com.mysql.cj.jdbc.Driver");
 	conn = DriverManager.getConnection(url,user,pass);
@@ -32,16 +32,21 @@
 	rs=pstmt.executeQuery();
 
 	if(rs.next()){
-		p_num=rs.getInt("COUNT(*)");
+		p_num+=rs.getInt("COUNT(*)");
 	}
 		
-	String query = "INSERT INTO ORDERS VALUE('"
-	        + request.getParameter("date")+"', '"
-	        + p_num++ +"', "
+	String query = "update orders set date='" 
+	        + request.getParameter("date")+"'"+" where date = ''";
+	     
+	String que = " 	INSERT INTO ORDERS VALUE('','"
+	        + (++p_num) +"', "
 	        + custNum +")";
 	
 	pstmt = conn.prepareStatement(query);
 	int res =pstmt.executeUpdate();
+	
+	pstmt = conn.prepareStatement(que);
+	res =pstmt.executeUpdate();
 	
 	String msg = "Order successfully! Thank you! ";
 	String list = request.getContextPath()+"/orderHistory.jsp";
