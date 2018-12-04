@@ -9,7 +9,7 @@
 <title> TheSSOK::The Best Shoppingmall </title>
 </head>
 <body>
-	<h2>Successfully Changed!</h2>
+	
 	<%
 	String url = "jdbc:mysql://localhost:3306/thessok?characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false";
 	String user="thessok";
@@ -38,6 +38,7 @@
 					+"' WHERE ID='"+id+"'";
 			pstmt = conn.prepareStatement(query);
 			res =pstmt.executeUpdate();
+			session.setAttribute(request.getParameter("newpassword"),"password");
 		}
 		if(request.getParameter("name")!= ""){
 			String query = "UPDATE CUSTOMER SET name='"
@@ -89,6 +90,7 @@
 			res =pstmt.executeUpdate();
 		}
 	}
+	
 	else{
 		msg="It's not your account!\n please check it again!";
 		list = request.getContextPath()+"/change_info.html";
@@ -98,17 +100,17 @@
 
 	%>
 	
-	   <script type = "text/javascript">
+	<h2><%=msg %></h2>
+	<button type="button" onclick="location.href='change_info.html' ">try again</button>
+	
+<script type = "text/javascript">
   <!--
    alert("<%=msg%>");
   location.href="<%=list%>";
   //-->>
   </script>
   
-<%
-	
-	
-	%>
+
 
 </body>
 </html>
