@@ -46,6 +46,7 @@
 			
 			
 			session.setAttribute("ID", id);
+			session.setAttribute("password",pwd);
 			session.setAttribute("customer_num",custNum);
 		}
 		else{
@@ -72,7 +73,7 @@
      
   <%
   Object id=session.getAttribute("ID");
-
+  Object pwd=session.getAttribute("password");
   Object customer_num=session.getAttribute("customer_num");
      %>
 
