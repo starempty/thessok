@@ -9,7 +9,7 @@
 <title>TheSSOK::The Best Shopping mall</title>
 </head>
 <body>
-	<h2>Successfully joined! WELCOME!</h2>
+	<h2>Successfully Add! THANK YOU!</h2>
 	<%
 	String url = "jdbc:mysql://localhost:3306/thessok?characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false";
 	String user="thessok";
@@ -24,9 +24,6 @@
 	Class.forName("com.mysql.cj.jdbc.Driver");
 	conn = DriverManager.getConnection(url,user,pass);
 	custNum=(Integer)session.getAttribute("customer_num");
-	
-	
-	out.println("<h2> ::" + request.getParameter("product") + " 상세 정보:: </h2>");
 	
 	//insert into shopping_cart value (1,1000000004 , 1100000228, 1110000001);
 	
@@ -51,7 +48,7 @@
 	
 	
 	%>
-	
-
+	<button type="button" onclick="location.href='shoppingcart.jsp' ">shopping cart</button>
+	<button type="button" onclick="location.href='category.html'' ">category</button>
 </body>
 </html>
