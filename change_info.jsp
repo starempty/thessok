@@ -103,13 +103,12 @@
 	<h2><%=msg %></h2>
 	<button type="button" onclick="location.href='change_info.html' ">try again</button>
 	
-<script type = "text/javascript">
-  <!--
-   alert("<%=msg%>");
-  location.href="<%=list%>";
-  //-->>
-  </script>
-  
+	   <script type = "text/javascript">
+     <!--
+      alert("<%=msg%>");
+     location.href="<%=list%>";
+     //-->>
+     </script>
 
 
 </body>
