@@ -13,7 +13,7 @@
 	<h2>Successfully joined! WELCOME!</h2>
 	<%
 	String url = "jdbc:mysql://localhost:3306/thessok?characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false";
-	String user="knu";
+	String user="thessok";
 	String pass="comp322";
 	Connection conn;
 	PreparedStatement pstmt;
@@ -30,7 +30,6 @@
 	
 	pstmt = conn.prepareStatement(sql);
 	rs=pstmt.executeQuery();
-
 	if(rs.next()){
 		p_num+=rs.getInt("COUNT(*)");
 	}
